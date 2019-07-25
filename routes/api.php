@@ -16,3 +16,13 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('/add_system_app', 'SystemAppController@addSystemApp')->middleware('secret');
+
+Route::post('/add_message', 'MessagesController@addMessage')->middleware('secret');
+
+Route::get('/all_messages', 'MessagesController@allMessages')->middleware('secret');
+
+Route::delete('/delete_message/{id}', 'MessagesController@deleteMessage')->middleware('secret');
+
+Route::post('/send_message', 'MessagesController@sendMessage')->middleware('secret');
